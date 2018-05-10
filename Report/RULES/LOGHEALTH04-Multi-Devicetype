@@ -1,0 +1,20 @@
+name: "LOGHEALTH04-Multi-Devicetype"
+description: ""
+path_for_export: "rsa-custom/log-health/LOGHEALTH04-Multi-Devicetype"
+query {
+  data_source_type: NWDB
+  netwitness_query {
+    select: "device.ip,countdistinct(device.type),distinct(device.type)"
+    where: "medium=32 && device.ip exists && device.type exists"
+    group_by_keys: "AGGREGATE"
+    order_by_keys {
+      column_name: "countdistinct(device.type)"
+      sort_order: DESCENDING
+    }
+    limit_results_count: 20
+    agg_session_threshold: 0
+    group_by: "device.ip"
+    alias_names: ""
+  }
+  data_source_name: ""
+}
