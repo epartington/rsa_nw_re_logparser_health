@@ -1,0 +1,173 @@
+name: "Device Log Health"
+rule_id: "rsa-custom/log-health/LOGHEALTH04-Multi-Devicetype"
+rule_id: "rsa-custom/log-health/LOGHEALTH01-unknown-chart"
+rule_id: "rsa-custom/log-health/LOGHEALTH02-word-chart"
+rule_id: "rsa-custom/log-health/LOGHEALTH03-parseerror-chart"
+format {
+  template_id: "FREEMARKER"
+  component_format {
+    component_id: "HEADER"
+    key_value_pair {
+      key: "level"
+      value: "1"
+    }
+    key_value_pair {
+      key: "text"
+      value: "Device.ip with multiple Device.types"
+    }
+  }
+  component_format {
+    component_id: "NOTE"
+    key_value_pair {
+      key: "text"
+      value: "Devices that have multiple parsers acting on them over this time period,\302\240<div>sorted most parsers per IP to least<div><div><br></div><div>Action:</div></div></div><div><ul><li>Review the list, make sure that the correct parsers are detected for the device.<br></li><li>Review for combinations that should not occur especially those related to rhlinux devices.<br></li><li>Reduce the number of parsers that are enabled on log decoder to minimum required (this will reduce the number of false mappings)<br></li><li>For those that need to be forced to one or more parsers, leverage the device mapping function in 11.x or the device table on log decoders for 10.6.x-pre to force the correct parser mappings (order is important when using the parser mappings)</li><li>10.4.x -\302\240https://community.rsa.com/docs/DOC-46080</li><li>10.6.x-\302\240https://community.rsa.com/docs/DOC-83616</li><li>11.x-\302\240https://community.rsa.com/docs/DOC-79854</li></ul></div>"
+    }
+  }
+  component_format {
+    component_id: "RULE"
+    key_value_pair {
+      key: "chartId"
+      value: "RULE_2_20180510143102_tabular"
+    }
+    key_value_pair {
+      key: "ruleType"
+      value: "NETWITNESS"
+    }
+    key_value_pair {
+      key: "format"
+      value: "TABULAR"
+    }
+    key_value_pair {
+      key: "text"
+      value: "LOGHEALTH04-Multi-Devicetype"
+    }
+    key_value_pair {
+      key: "ruleId"
+      value: "rsa-custom/log-health/LOGHEALTH04-Multi-Devicetype"
+    }
+  }
+  component_format {
+    component_id: "HEADER"
+    key_value_pair {
+      key: "level"
+      value: "1"
+    }
+    key_value_pair {
+      key: "text"
+      value: "Unknown Devices"
+    }
+  }
+  component_format {
+    component_id: "NOTE"
+    key_value_pair {
+      key: "text"
+      value: "Unknown devices do not have a parser detected for them or no parser is installed/enabled for it.<div><br></div><div>Action:</div><div><ul><li>Determine the type of device from the raw log capture in netwitness (look for tokens or indications of what type of device it might be)<br></li><li>Review the RSA Github site for log parsers to see if you can search for the tokens that are in the raw log to locate potential parsers if still unkown -\302\240https://github.com/netwitness/nw-logparsers<br></li><li>Locate the parser in RSA live to make sure the current parser is subscribed and deployed to the log decoders<br></li><li>Make sure the log parser is enabled on the decoder (checkbox set)<br></li><li>Review to make sure any changes take effect from the point of install forward</li><li>10.6-pre - consider creating a new parser for the device with LTP 1.0 tool -\302\240https://community.rsa.com/docs/DOC-85208</li><li>11.x - is the device extacting meta with the tokens file for well known data (hostname, ip, url, ports) or only word meta?</li><li>11.x - if data is extracted using tokens then consider if parser is required</li><li>11.x - if data is only in word meta, Consider the LPT 1.0 tool to create a parser for the device.</li></ul></div><div><br></div>"
+    }
+  }
+  component_format {
+    component_id: "RULE"
+    key_value_pair {
+      key: "chartId"
+      value: "RULE_107_20180427002512_tabular"
+    }
+    key_value_pair {
+      key: "ruleType"
+      value: "NETWITNESS"
+    }
+    key_value_pair {
+      key: "format"
+      value: "TABULAR"
+    }
+    key_value_pair {
+      key: "text"
+      value: "LOGHEALTH01-unknown-chart"
+    }
+    key_value_pair {
+      key: "ruleId"
+      value: "rsa-custom/log-health/LOGHEALTH01-unknown-chart"
+    }
+  }
+  component_format {
+    component_id: "HEADER"
+    key_value_pair {
+      key: "level"
+      value: "1"
+    }
+    key_value_pair {
+      key: "text"
+      value: "Device.type with word meta"
+    }
+  }
+  component_format {
+    component_id: "NOTE"
+    key_value_pair {
+      key: "text"
+      value: "Device types with word meta indicate that a parser has matched a header for that device but no payload (message body) has matched a parser entry.<div><br></div><div>Action:</div><div><ul><li>Review the device mapping for that device to make sure that the right parsers exist for that IP (potentially old device.ip that switched from linux server to windows server and mapping is incorrect)<br></li><li>Review the device to see if this is a new message body for an existing header for the device, consider creating a -custom.xml parser for that device to include the new messages and submit via RSA Github or support case<br></li><li>custom cef - https://community.rsa.com/docs/DOC-79189<br></li><li>custom log parser -\302\240https://community.rsa.com/docs/DOC-83425<br></li></ul></div>"
+    }
+  }
+  component_format {
+    component_id: "RULE"
+    key_value_pair {
+      key: "chartId"
+      value: "RULE_106_20180427002512_tabular"
+    }
+    key_value_pair {
+      key: "ruleType"
+      value: "NETWITNESS"
+    }
+    key_value_pair {
+      key: "format"
+      value: "TABULAR"
+    }
+    key_value_pair {
+      key: "text"
+      value: "LOGHEALTH02-word-chart"
+    }
+    key_value_pair {
+      key: "ruleId"
+      value: "rsa-custom/log-health/LOGHEALTH02-word-chart"
+    }
+  }
+  component_format {
+    component_id: "HEADER"
+    key_value_pair {
+      key: "level"
+      value: "1"
+    }
+    key_value_pair {
+      key: "text"
+      value: "Device.type with parseerror"
+    }
+  }
+  component_format {
+    component_id: "NOTE"
+    key_value_pair {
+      key: "text"
+      value: "<font face=\"Primary, helvetica, arial, verdana, sans-serif\">Devices that are parsing meta for most fields but have parserror meta for particular metakey data.\302\240 This can indicate the format of the data into the key does not match the format of the key (invalid MAC address into eth.src or eth.dst - MAC formatted keys), text into IP key</font><div><div><br></div><div>Action</div></div><div><ul><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the metakey error for the device type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the type of data from the raw log and the configuration of the metakey from the concentrator and look for obvious format mismatches</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review if the log decoder table-map.xml or table-map-custom.xml have the failureKey fields set to allow the metakey to fail safely to a valid key format when data types don\'t match (this can be true if you forked a table-map.xml a long time ago before the failureKey meta was added for many keys)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is a custom parser, review the parser logic and make sure the correct keys are selected based on the data type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is an RSA Provided parser make sure you have the latest version from RSA Live (also check github)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If you have the latest RSA provided parser, contact support with the error and the raw logs to allow the content team to make the appropriate changes if required.</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\"><br></font></li></ul></div>"
+    }
+  }
+  component_format {
+    component_id: "RULE"
+    key_value_pair {
+      key: "chartId"
+      value: "RULE_105_20180427002512_tabular"
+    }
+    key_value_pair {
+      key: "ruleType"
+      value: "NETWITNESS"
+    }
+    key_value_pair {
+      key: "format"
+      value: "TABULAR"
+    }
+    key_value_pair {
+      key: "text"
+      value: "LOGHEALTH03-parseerror-chart"
+    }
+    key_value_pair {
+      key: "ruleId"
+      value: "rsa-custom/log-health/LOGHEALTH03-parseerror-chart"
+    }
+  }
+}
+path_for_export: "RSA-Custom/log-health/Device Log Health"
