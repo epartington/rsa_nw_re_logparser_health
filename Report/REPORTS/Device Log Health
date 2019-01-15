@@ -24,6 +24,13 @@ format {
     }
   }
   component_format {
+    component_id: "NOTE"
+    key_value_pair {
+      key: "text"
+      value: "<font face=\"Primary, helvetica, arial, verdana, sans-serif\"><span style=\"font-size: 12px;\">To tune the report you can change the min-threshold of the rule to only include devices with more than x unique parsers</span></font><div><font face=\"Primary, helvetica, arial, verdana, sans-serif\"><br></font><div style=\"\"><font face=\"Primary, helvetica, arial, verdana, sans-serif\"><span style=\"font-size: 12px;\">min_threshold(2,countdistinct(device.type))</span></font><br></div></div>"
+    }
+  }
+  component_format {
     component_id: "RULE"
     key_value_pair {
       key: "chartId"
@@ -143,7 +150,7 @@ format {
     component_id: "NOTE"
     key_value_pair {
       key: "text"
-      value: "<font face=\"Primary, helvetica, arial, verdana, sans-serif\">Devices that are parsing meta for most fields but have parserror meta for particular metakey data.\302\240 This can indicate the format of the data into the key does not match the format of the key (invalid MAC address into eth.src or eth.dst - MAC formatted keys), text into IP key</font><div><div><br></div><div>Action</div></div><div><ul><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the metakey error for the device type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the type of data from the raw log and the configuration of the metakey from the concentrator and look for obvious format mismatches</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review if the log decoder table-map.xml or table-map-custom.xml have the failureKey fields set to allow the metakey to fail safely to a valid key format when data types don\'t match (this can be true if you forked a table-map.xml a long time ago before the failureKey meta was added for many keys)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is a custom parser, review the parser logic and make sure the correct keys are selected based on the data type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is an RSA Provided parser make sure you have the latest version from RSA Live (also check github)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If you have the latest RSA provided parser, contact support with the error and the raw logs to allow the content team to make the appropriate changes if required.</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\"><br></font></li></ul></div>"
+      value: "<font face=\"Primary, helvetica, arial, verdana, sans-serif\">Devices that are parsing meta for most fields but have parserror meta for particular metakey data.\302\240 This can indicate the format of the data into the key does not match the format of the key (invalid MAC address into eth.src or eth.dst - MAC formatted keys), text into IP key</font><div><div><br></div><div>Action</div></div><div><ul><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the metakey error for the device type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review the type of data from the raw log and the configuration of the metakey from the concentrator and look for obvious format mismatches</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">review if the log decoder table-map.xml or table-map-custom.xml have the failureKey fields set to allow the metakey to fail safely to a valid key format when data types don\'t match (this can be true if you forked a table-map.xml a long time ago before the failureKey meta was added for many keys)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is a custom parser, review the parser logic and make sure the correct keys are selected based on the data type</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If this is an RSA Provided parser make sure you have the latest version from RSA Live (also check github)</font></li><li><font face=\"Primary, helvetica, arial, verdana, sans-serif\">If you have the latest RSA provided parser, contact support with the error and the raw logs to allow the content team to make the appropriate changes if required.</font></li></ul></div>"
     }
   }
   component_format {

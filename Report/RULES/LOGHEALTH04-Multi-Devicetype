@@ -12,6 +12,7 @@ query {
       sort_order: DESCENDING
     }
     limit_results_count: 20
+    then_clause: "min_threshold(2,countdistinct(device.type))"
     agg_session_threshold: 0
     group_by: "device.ip"
     alias_names: ""
